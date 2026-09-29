@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SUMMER HOUSE — 30 DAY EXPERIENCE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;600&family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --cream:#f7f0e4;--paper:#fbf7ef;--ink:#1d2a22;--green:#13251f;--deep:#0b1713;
+  --olive:#35432f;--gold:#d5ad5d;--gold2:#f0d48b;--muted:#747667;--line:rgba(55,61,43,.14);
+  --ease:cubic-bezier(.18,.84,.24,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+a{color:inherit}
+.page{position:relative;min-height:100vh;scroll-margin-top:70px}
+.noise{position:fixed;inset:0;z-index:1000;pointer-events:none;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E")}
+.cursor-glow{position:fixed;width:260px;height:260px;border-radius:50%;pointer-events:none;z-index:2;background:radial-gradient(circle,rgba(221,181,94,.10),transparent 65%);transform:translate(-50%,-50%);mix-blend-mode:screen}
+.nav{height:70px;position:fixed;z-index:100;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:0 4vw;background:rgba(250,246,238,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.55)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#2d3827;font:500 13px "Cormorant Garamond",serif;letter-spacing:3px}
+.brand-mark{color:var(--gold);font-size:18px}
+.nav-status{position:absolute;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:2px;color:#68705f;display:flex;gap:8px;align-items:center}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#a9bf73;box-shadow:0 0 14px #a9bf73;animation:pulse 1.7s infinite}
+.nav-links{display:flex;gap:26px}
+.nav-links a{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;text-decoration:none;color:#364126;position:relative}
+.nav-links a:after{content:"";position:absolute;left:0;right:100%;bottom:-7px;height:1px;background:var(--gold);transition:right .35s var(--ease)}
+.nav-links a:hover:after{right:0}
+.menu{display:none;border:0;background:none;font-size:22px;color:#364126}
+.hero{display:grid;place-items:center;overflow:hidden;background:#15241d;color:white}
+.hero-bg,.penalty-bg,.house-bg{position:absolute;inset:-4%;background-position:center;background-size:cover;will-change:transform}
+.hero-bg{background-image:url("assets/image_01_45ae7653421a.webp");animation:slowZoom 18s ease-in-out infinite alternate}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,transparent 0 18%,rgba(9,20,15,.18) 45%,rgba(7,15,12,.66) 100%),linear-gradient(180deg,rgba(7,17,13,.05),rgba(7,15,12,.4))}
+.sun-orb{position:absolute;width:42vw;height:42vw;max-width:620px;max-height:620px;border-radius:50%;right:-15%;top:-20%;background:radial-gradient(circle,rgba(245,207,112,.18),transparent 65%);filter:blur(12px);animation:float 9s ease-in-out infinite alternate}
+.hero-content{position:relative;z-index:3;text-align:center;margin-top:78px;max-width:1000px;padding:20px 20px 28px}
+.eyebrow{font:500 12px "Cormorant Garamond",serif;letter-spacing:4.5px}
+.hero-kicker{font:500 10px "DM Sans",sans-serif;letter-spacing:6px;margin-top:11px;color:#f2dfad}
+.star{font-size:18px;color:var(--gold2);margin:10px 0}
+.hero h1{font:400 clamp(68px,10vw,140px) "Bodoni Moda",serif;line-height:.77;margin:0;color:#fff8e9;text-shadow:0 12px 60px rgba(0,0,0,.28)}
+.script{font:400 clamp(56px,7vw,96px) "Cormorant Garamond",serif;font-style:italic;color:#e5bd69;margin-top:-4px;text-shadow:0 5px 30px rgba(0,0,0,.3)}
+.hero-copy{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#f4eddd;margin:20px 0 0}
+.gold-btn{margin-top:30px;display:inline-flex;align-items:center;gap:24px;text-decoration:none;border:1px solid rgba(240,212,139,.8);border-radius:999px;background:rgba(20,34,27,.74);color:#fff8e9;padding:15px 17px 15px 26px;letter-spacing:2.4px;font-size:10px;box-shadow:0 16px 50px rgba(0,0,0,.22);transition:transform .45s var(--ease),box-shadow .45s ease,background .45s ease}
+.gold-btn i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#1d291f;font-style:normal;font-size:14px;transition:transform .4s var(--ease)}
+.gold-btn:hover{transform:translateY(-5px);background:#263a2e;box-shadow:0 25px 70px rgba(0,0,0,.32)}
+.gold-btn:hover i{transform:rotate(45deg)}
+.hero-meta{display:flex;justify-content:center;gap:15px;align-items:center;margin-top:26px;font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.72)}
+.hero-meta span:nth-child(even){width:2px;height:2px;background:var(--gold);border-radius:50%}
+.hero-corner{position:absolute;z-index:3;bottom:30px;font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.5)}
+.hero-corner-left{left:4vw}.hero-corner-right{right:4vw}
+.section-shell{max-width:1240px;margin:auto;padding:115px 4vw}
+.section-head{text-align:center;max-width:800px;margin:0 auto 55px;position:relative}
+.section-index{font-size:8px;letter-spacing:3px;color:#9a8050;margin-bottom:24px}
+.section-head h2{font:500 clamp(50px,7vw,92px) "Bodoni Moda",serif;line-height:.9;margin:8px 0 22px;color:#30402d}
+.section-head h2 em,.house-copy h2 em{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:400;color:#b78d42}
+.section-head>p:last-child{font-size:13px;color:var(--muted);line-height:1.7}
+.contestants-section{background:var(--cream);background-image:radial-gradient(circle at 10% 10%,rgba(210,174,91,.11),transparent 30%),url("assets/image_02_0f503462525a.webp");background-size:auto,cover;background-attachment:fixed}
+.cast-grid{max-width:1180px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.cast-card{background:rgba(255,250,241,.9);border:1px solid rgba(177,138,59,.30);border-radius:16px;overflow:hidden;position:relative;box-shadow:0 10px 35px rgba(47,51,36,.07);transform:translateY(0);transition:transform .65s var(--ease),box-shadow .65s var(--ease),border-color .65s ease;isolation:isolate}
+.cast-card:before{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(115deg,transparent 25%,rgba(255,255,255,.35) 48%,transparent 70%);transform:translateX(-130%);opacity:0}
+.cast-card:hover{transform:translateY(-11px) scale(1.018);box-shadow:0 30px 70px rgba(31,39,28,.20),0 0 0 1px rgba(213,173,93,.35);border-color:rgba(213,173,93,.7)}
+.cast-card:hover:before{opacity:1;animation:shine 1.1s var(--ease)}
+.cast-photo{aspect-ratio:4/5;overflow:hidden;background:#1a2a22;position:relative}
+.cast-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(9,18,14,.18));pointer-events:none}
+.cast-photo img{width:100%;height:100%;display:block;object-fit:cover;transition:transform 1s var(--ease),filter .7s ease}
+.cast-card:hover .cast-photo img{transform:scale(1.075);filter:saturate(1.06) contrast(1.03)}
+.cast-info{padding:13px 14px 15px;display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+.cast-name{font:500 16px "Cormorant Garamond",serif;line-height:1.02}
+.cast-number{font-size:8px;letter-spacing:2px;color:#a37c37}
+.rules-section{background:#ece6da}
+.rule-grid{max-width:1120px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rule-card{position:relative;min-height:245px;padding:27px;background:rgba(255,251,244,.8);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .55s var(--ease),box-shadow .55s ease,border-color .45s ease}
+.rule-card:before{content:"";position:absolute;width:130px;height:130px;right:-45px;bottom:-55px;border-radius:50%;background:radial-gradient(circle,rgba(213,173,93,.18),transparent 68%)}
+.rule-card:hover{box-shadow:0 25px 65px rgba(43,48,35,.13);border-color:rgba(177,138,59,.35)}
+.rule-no{position:absolute;right:22px;top:22px;font-size:8px;letter-spacing:2px;color:#a17b3a}
+.rule-icon{font:500 29px "Bodoni Moda",serif;color:#b48a42;margin-bottom:30px}
+.rule-card h3{font:500 25px "Bodoni Moda",serif;margin:0 0 12px}
+.rule-card p{font-size:12px;line-height:1.7;color:#676c60;margin:0 0 20px}
+.rule-card small{font-size:7px;letter-spacing:2px;color:#9b9a89}
+.penalties-section{background:#0e1b16;color:#f8f0df;overflow:hidden}
+.penalty-bg{background-image:url("assets/image_01_45ae7653421a.webp");opacity:.13;filter:saturate(.7)}
+.penalty-overlay{position:absolute;inset:0;background:radial-gradient(circle at 50% 0,rgba(214,174,91,.11),transparent 35%),linear-gradient(180deg,rgba(7,16,12,.72),#0e1b16 80%)}
+.relative{position:relative;z-index:2}
+.section-head.light h2{color:#f8f0df}.section-head.light .section-index{color:#d3b56f}.section-head.light>p:last-child{color:#b9bdaf}
+.penalty-list{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.penalty-card{padding:22px 23px;border:1px solid rgba(235,212,157,.18);background:linear-gradient(120deg,rgba(255,255,255,.07),rgba(255,255,255,.025));backdrop-filter:blur(14px);border-radius:16px;transition:transform .5s var(--ease),border-color .5s ease,background .5s ease}
+.penalty-card:hover{border-color:rgba(235,212,157,.48);background:rgba(255,255,255,.08)}
+.penalty-top{display:grid;grid-template-columns:35px 1fr auto;align-items:center;gap:14px}
+.penalty-top span{font-size:8px;letter-spacing:2px;color:#bda466}.penalty-top b{font:500 21px "Bodoni Moda",serif}.penalty-top strong{font:500 23px "Bodoni Moda",serif;color:#e8c979}
+.penalty-card p{margin:13px 49px 18px;color:#c8c9be;font-size:12px;line-height:1.65}
+.penalty-bottom{margin-left:49px;padding-top:12px;border-top:1px solid rgba(255,255,255,.09);display:flex;justify-content:space-between;font-size:7px;letter-spacing:2px;color:#8e9589}
+.vote-strip{max-width:1000px;margin:30px auto 0;border:1px solid rgba(235,212,157,.22);border-radius:18px;background:rgba(255,255,255,.045);display:grid;grid-template-columns:1fr 1px 1fr;align-items:center;overflow:hidden;backdrop-filter:blur(14px)}
+.vote-strip>div:not(.vote-divider){padding:24px 30px;display:grid;grid-template-columns:1fr auto;align-items:center}
+.vote-strip span{font-size:9px;letter-spacing:2px;color:#c9cabb}.vote-strip strong{font:500 32px "Bodoni Moda",serif;color:#e8c979;grid-row:1/3;grid-column:2}
+.vote-strip small{font-size:7px;letter-spacing:1.5px;color:#7f897e}.vote-divider{height:55px;background:rgba(255,255,255,.12)}
+.house-section{overflow:hidden;background:#101d18;color:white}
+.house-bg{background-image:url("assets/image_02_0f503462525a.webp");filter:saturate(.85);animation:slowZoom 22s ease-in-out infinite alternate}
+.house-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,16,12,.85),rgba(7,16,12,.38) 52%,rgba(7,16,12,.3)),linear-gradient(0deg,rgba(7,16,12,.72),transparent 55%)}
+.house-shell{min-height:100vh;display:grid;grid-template-columns:1.4fr .6fr;align-items:end;gap:40px}
+.house-copy{max-width:760px;padding-bottom:30px}
+.light-index{color:#d3b56f}.house-copy h2{font:500 clamp(56px,8vw,110px) "Bodoni Moda",serif;line-height:.82;margin:10px 0 24px;color:#fff9eb}
+.house-copy>p:not(.eyebrow):not(.section-index){max-width:560px;font-size:14px;line-height:1.8;color:#e2dfd3}
+.house-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.house-tags span{padding:9px 13px;border:1px solid rgba(255,255,255,.34);border-radius:999px;font-size:7px;letter-spacing:2px;background:rgba(255,255,255,.05);backdrop-filter:blur(8px)}
+.world-panel{margin-bottom:30px;border:1px solid rgba(255,255,255,.18);background:rgba(10,23,18,.45);backdrop-filter:blur(16px);border-radius:16px;overflow:hidden}
+.world-panel div{display:flex;justify-content:space-between;padding:15px 18px;border-bottom:1px solid rgba(255,255,255,.09);font-size:7px;letter-spacing:1.5px;color:#aeb5a8}
+.world-panel div:last-child{border:0}.world-panel strong{color:#f0d48b;font-weight:500}
+footer{padding:24px 4vw;background:#09130f;color:#aeb5a8;display:flex;justify-content:space-between;font-size:7px;letter-spacing:2px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+@keyframes pulse{50%{opacity:.35;transform:scale(.7)}}
+@keyframes slowZoom{from{transform:scale(1.02)}to{transform:scale(1.10)}}
+@keyframes float{from{transform:translate(0,0)}to{transform:translate(-25px,20px)}}
+@keyframes shine{to{transform:translateX(130%)}}
+@keyframes scrollLine{0%,100%{opacity:.3;transform:scaleY(.65);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+@media(max-width:950px){
+ .nav{padding:0 20px}.nav-status{display:none}.nav-links{display:none}.menu{display:block}.nav-links.open{display:flex;position:absolute;top:70px;left:0;right:0;padding:18px 20px 24px;flex-direction:column;gap:18px;background:rgba(250,246,238,.97);backdrop-filter:blur(18px)}
+ .section-shell{padding:95px 18px}.cast-grid{grid-template-columns:repeat(3,1fr)}
+ .rule-grid{grid-template-columns:repeat(2,1fr)}.house-shell{grid-template-columns:1fr;align-items:end}.world-panel{max-width:520px}
+}
+@media(max-width:620px){
+ .page{min-height:auto}.hero{min-height:100svh}.hero-content{padding:70px 16px 30px}.hero h1{font-size:70px}.script{font-size:56px}.hero-copy{font-size:8px;letter-spacing:2px}.hero-meta{font-size:6px;gap:9px}.hero-corner{display:none} .section-shell{padding:82px 14px}.section-head{margin-bottom:40px}.section-head h2{font-size:50px}.cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.cast-card{border-radius:12px}.cast-info{padding:10px}.cast-name{font-size:14px}.cast-number{font-size:7px}
+ .rule-grid{grid-template-columns:1fr}.rule-card{min-height:0;padding:22px}.rule-icon{margin-bottom:20px}.penalty-list{grid-template-columns:1fr}.penalty-card{padding:18px}.penalty-top{grid-template-columns:25px 1fr auto}.penalty-top b{font-size:17px}.penalty-top strong{font-size:20px}.penalty-card p{margin:12px 0 16px}.penalty-bottom{margin-left:0}.vote-strip{grid-template-columns:1fr}.vote-divider{width:100%;height:1px}.vote-strip>div:not(.vote-divider){padding:18px 20px}.house-shell{min-height:90svh}.house-copy{padding-bottom:0}.house-copy h2{font-size:58px}.world-panel{margin-bottom:0}.footer{gap:10px}
+ footer{gap:12px;flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* FINAL ENTRY WORLD */
+.enter-section{display:grid;place-items:center;position:relative;overflow:hidden;min-height:100svh;background:#10231e;color:#fffdf7;text-align:center}
+.enter-bg{position:absolute;inset:-4%;background:url("assets/image_01_45ae7653421a.webp") center/cover no-repeat;transform:scale(1.06);animation:entryBreath 14s ease-in-out infinite alternate;filter:saturate(1.04) contrast(1.03)}
+.enter-overlay{position:absolute;inset:0;background:radial-gradient(circle at center,rgba(16,35,30,.12),rgba(8,18,15,.76)),linear-gradient(180deg,rgba(8,18,15,.18),rgba(8,18,15,.72))}
+.enter-content{position:relative;z-index:2;max-width:850px;padding:40px 24px}
+.enter-content h2{font:500 clamp(58px,9vw,128px) "Bodoni Moda",serif;line-height:.84;margin:18px 0 20px;color:#fff9e9;text-shadow:0 10px 50px rgba(0,0,0,.3)}
+.enter-content h2 em{font-family:"Cormorant Garamond",serif;font-style:italic;color:#e0bd72}
+.enter-content>p:last-of-type{font:400 18px "Cormorant Garamond",serif;letter-spacing:.08em;color:rgba(255,253,247,.82);margin:0 auto 30px}
+.enter-content .gold-btn{display:inline-flex;align-items:center;gap:24px;text-decoration:none}
+.enter-content .gold-btn i{font-style:normal;font-size:16px;transition:transform .3s ease}
+.enter-content .gold-btn:hover i{transform:translate(4px,-4px)}
+.penalty-effect{display:grid;grid-template-columns:1fr auto 1fr auto;align-items:center;gap:10px;margin-top:20px;padding-top:18px;border-top:1px solid rgba(233,214,165,.22)}
+.penalty-effect span{font-size:9px;letter-spacing:1.8px;color:rgba(255,255,255,.65)}
+.penalty-effect strong{font:600 24px "Bodoni Moda",serif;color:#e5c475}
+@keyframes entryBreath{from{transform:scale(1.06) translate3d(-.4%,-.2%,0)}to{transform:scale(1.13) translate3d(.4%,.2%,0)}}
+@media(max-width:700px){.penalty-effect{grid-template-columns:1fr auto;gap:6px 12px}.penalty-effect span:nth-of-type(2){grid-column:1}.penalty-effect strong:nth-of-type(2){grid-column:2;grid-row:2}.enter-content h2{font-size:56px}.enter-content>p:last-of-type{font-size:16px}}
+
+/* HERO LAPTOP SAFE ZONE */
+@media (min-width:951px){
+  .hero-content{transform:translateY(10px);}
+}
+@media (min-width:951px) and (max-height:800px){
+  .hero-content{margin-top:88px;transform:scale(.93) translateY(12px);}
+}
+
+
+/* =========================================================
+   FINAL PREMIUM PASS — INVITATION HERO + PENALTY SYSTEM
+   ========================================================= */
+.hero-content{
+  max-width:1100px;
+  padding-inline:32px;
+  text-shadow:0 12px 50px rgba(0,0,0,.22);
+}
+.hero-invitation{
+  font-size:clamp(10px,1vw,14px);
+  letter-spacing:clamp(4px,.55vw,8px);
+  margin-bottom:12px;
+  opacity:.96;
+}
+.hero-kicker{
+  font:500 clamp(11px,1.05vw,15px) "Cormorant Garamond",serif;
+  letter-spacing:clamp(4px,.6vw,9px);
+  color:#f0cd79;
+  margin:8px 0 2px;
+}
+.hero h1{
+  font-size:clamp(58px,8.2vw,124px);
+  margin-top:18px;
+  letter-spacing:-.035em;
+}
+.hero .script{
+  font-size:clamp(52px,6.2vw,92px);
+  margin-top:-2px;
+}
+.hero-copy{
+  margin-top:22px;
+  font-size:clamp(9px,.9vw,13px);
+  letter-spacing:clamp(2px,.32vw,4px);
+}
+.hero .gold-btn{
+  margin-top:24px;
+  min-width:300px;
+  justify-content:space-between;
+  padding:13px 14px 13px 24px;
+}
+.hero .gold-btn i{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:#e2b95e;
+  color:#183126;
+  font-size:14px;
+}
+.hero-meta{margin-top:16px}
+
+.inline-vote{color:#e8c979;font-weight:600;white-space:nowrap}
+.penalty-card{
+  position:relative;
+  overflow:hidden;
+}
+.penalty-card:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(115deg,transparent 0%,transparent 42%,rgba(255,255,255,.09) 50%,transparent 58%,transparent 100%);
+  transform:translateX(-120%);
+}
+.penalty-card:hover:after{animation:penaltySweep 1s ease}
+.penalty-effect strong:first-of-type{color:#e8c979}
+.penalty-effect strong:last-of-type{color:#e9c1b4}
+@keyframes penaltySweep{to{transform:translateX(120%)}}
+
+@media (min-width:951px) and (max-height:850px){
+  .hero-content{
+    margin-top:54px !important;
+    transform:scale(.90) translateY(14px) !important;
+    transform-origin:center center;
+  }
+  .hero-invitation{margin-bottom:6px}
+  .hero h1{margin-top:10px}
+  .hero-copy{margin-top:15px}
+  .hero .gold-btn{margin-top:18px}
+  .hero-meta{margin-top:12px}
+}
+@media (min-width:951px) and (min-height:851px){
+  .hero-content{transform:translateY(18px)}
+}
+@media (max-width:620px){
+  .hero-content{padding-inline:18px}
+  .hero-invitation{letter-spacing:3.5px}
+  .hero-kicker{letter-spacing:4px}
+  .hero h1{font-size:68px}
+  .hero .script{font-size:55px}
+  .hero .gold-btn{min-width:0;width:min(330px,92vw);padding-left:20px}
+}
+
+</style>
+
+<style id="worldos-page-transition">
+/* --- PAGE 1 -> PAGE 2 EXPERIENCE --- */
+body:not(.page-two) main > section:not(#home){
+  display:none !important;
+}
+body:not(.page-two) .nav{
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+body.page-two main > #home{
+  display:none !important;
+}
+body.page-two .nav{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transition:opacity .7s ease;
+}
+#pageTransition{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#10150f;
+  color:#f4ead0;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .55s ease, visibility .55s ease;
+}
+#pageTransition.active{
+  opacity:1;
+  visibility:visible;
+}
+#pageTransition .pt-inner{
+  text-align:center;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font:500 12px/1.4 "DM Sans",sans-serif;
+}
+#pageTransition .pt-mark{
+  display:block;
+  font:400 30px/1 "Cormorant Garamond",serif;
+  margin-bottom:14px;
+  animation:ptSpin 1.2s ease-in-out infinite;
+}
+@keyframes ptSpin{
+  0%,100%{transform:rotate(0deg) scale(1)}
+  50%{transform:rotate(180deg) scale(1.12)}
+}
+body.page-two{
+  overflow-x:hidden;
+}
+@media (prefers-reduced-motion: reduce){
+  #pageTransition{transition:none}
+  #pageTransition .pt-mark{animation:none}
+}
+</style>
+
+</head>
+<body>
+<div class="noise"></div>
+
+<div id="pageTransition" aria-hidden="true">
+  <div class="pt-inner">
+    <span class="pt-mark">✦</span>
+    ENTERING SUMMER HOUSE
+  </div>
+</div>
+
+<div class="cursor-glow"></div>
+
+<header class="nav">
+  <a class="brand" href="#home"><span class="brand-mark">✦</span><span>SUMMER HOUSE</span></a>
+  <div class="nav-status"><span class="live-dot"></span> 30 DAY EXPERIENCE</div>
+  <button class="menu" aria-label="Open menu" aria-expanded="false">☰</button>
+  <nav class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#contestants">Contestants</a>
+    <a href="#rules">Rules</a>
+    <a href="#penalties">Penalties</a>
+    <a href="#enter">Enter</a>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="hero page">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="sun-orb"></div>
+  <div class="hero-content reveal">
+    <p class="eyebrow hero-invitation">YOU HAVE BEEN INVITED</p>
+    <div class="hero-kicker">YOUR SUMMER AWAITS.</div>
+    <div class="star">✦</div>
+    <h1>SUMMER</h1>
+    <div class="script">House</div>
+    <p class="hero-copy">11 contestants. 30 days. One winning couple.</p>
+    <a class="gold-btn magnetic" href="#contestants"><span>ACCEPT THE INVITATION</span><i>↗</i></a>
+  </div>
+  <div class="hero-corner hero-corner-left">SH / 30</div>
+  <div class="hero-corner hero-corner-right">EST. 2026</div>
+</section>
+
+<section id="contestants" class="page contestants-section">
+  <div class="section-shell">
+    <div class="section-head reveal">
+      <div class="section-index">01 / CAST</div>
+      <p class="eyebrow dark">THE SUMMER HOUSE</p>
+      <h2>MEET THE<br><em>CONTESTANTS.</em></h2>
+      <p>Eleven people enter. Every connection can change the game.</p>
+    </div>
+    <div class="cast-grid" id="castGrid"></div>
+  </div>
+</section>
+
+<section id="rules" class="page rules-section">
+  <div class="section-shell">
+    <div class="section-head reveal">
+      <div class="section-index">02 / THE GAME</div>
+      <p class="eyebrow dark">HOUSE PROTOCOL</p>
+      <h2>THE<br><em>RULES.</em></h2>
+      <p>Know the house. Know the clock. Know what is at stake.</p>
+    </div>
+    <div class="rule-grid">
+      <article class="rule-card reveal tilt"><span class="rule-no">01</span><div class="rule-icon">30</div><h3>30 DAYS</h3><p>The Summer House experience runs from Day 1 through Day 30.</p><small>FINAL DAY · DAY 30</small></article>
+      <article class="rule-card reveal tilt"><span class="rule-no">02</span><div class="rule-icon">◷</div><h3>FIXED SCHEDULE</h3><p>Challenges and eliminations happen on their scheduled days and times.</p><small>REPORT WHEN INSTRUCTED</small></article>
+      <article class="rule-card reveal tilt"><span class="rule-no">03</span><div class="rule-icon">◉</div><h3>AUDIENCE VOTE</h3><p>Elimination voting and winning votes affect the final game score.</p><small>VOTE SYSTEM ACTIVE</small></article>
+      <article class="rule-card reveal tilt"><span class="rule-no">04</span><div class="rule-icon">G</div><h3>GOLD CARD</h3><p>Gold Card access can unlock restricted areas for one day only.</p><small>ONE DAY ACCESS</small></article>
+      <article class="rule-card reveal tilt"><span class="rule-no">05</span><div class="rule-icon">10—18</div><h3>ROOM HOURS</h3><p>Contestant rooms are open from 10:00 AM until 6:00 PM.</p><small>OPEN HOURS · 10:00—18:00</small></article>
+      <article class="rule-card reveal tilt"><span class="rule-no">06</span><div class="rule-icon">∞</div><h3>FINAL DAY</h3><p>The experience continues until Day 30 is completed.</p><small>DAY 30 COMPLETION</small></article>
+    </div>
+  </div>
+</section>
+
+<section id="penalties" class="page penalties-section">
+  <div class="penalty-bg"></div>
+  <div class="penalty-overlay"></div>
+  <div class="section-shell relative">
+    <div class="section-head light reveal">
+      <div class="section-index">03 / HOUSE CONTROL</div>
+      <p class="eyebrow">BREAK THE RULE. FEEL THE CONSEQUENCE.</p>
+      <h2>PENALTIES<br><em>&amp; VOTES.</em></h2>
+      <p>Every violation applies <strong class="inline-vote">+100 Elimination Vote</strong> and <strong class="inline-vote">−100 Winning Vote</strong>.</p>
+    </div>
+    <div class="penalty-list">
+      <article class="penalty-card reveal tilt">
+        <div class="penalty-top"><span>01</span><b>BEDROOM ACCESS</b></div>
+        <p>Entering another contestant's bedroom outside 10:00–18:00 without an active Gold Card.</p>
+        <div class="penalty-effect"><span>ELIMINATION VOTE</span><strong>+100</strong><span>WINNING VOTE</span><strong>−100</strong></div>
+      </article>
+      <article class="penalty-card reveal tilt">
+        <div class="penalty-top"><span>02</span><b>OPEN-DOOR RULE</b></div>
+        <p>Entering another contestant's bedroom during Open Hours while violating the required open-door rule.</p>
+        <div class="penalty-effect"><span>ELIMINATION VOTE</span><strong>+100</strong><span>WINNING VOTE</span><strong>−100</strong></div>
+      </article>
+      <article class="penalty-card reveal tilt">
+        <div class="penalty-top"><span>03</span><b>WATERSPORTS ACCESS</b></div>
+        <p>Accessing the yacht, boat, or jet ski without an active Gold Card.</p>
+        <div class="penalty-effect"><span>ELIMINATION VOTE</span><strong>+100</strong><span>WINNING VOTE</span><strong>−100</strong></div>
+      </article>
+      <article class="penalty-card reveal tilt">
+        <div class="penalty-top"><span>04</span><b>EVENT ATTENDANCE</b></div>
+        <p>Deliberately failing to attend a scheduled Challenge or Elimination after being instructed to report.</p>
+        <div class="penalty-effect"><span>ELIMINATION VOTE</span><strong>+100</strong><span>WINNING VOTE</span><strong>−100</strong></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="enter" class="page enter-section">
+  <div class="enter-bg"></div>
+  <div class="enter-overlay"></div>
+  <div class="enter-content reveal">
+    <p class="eyebrow">YOUR SUMMER STARTS HERE</p>
+    <h2>ENTER<br><em>SUMMER HOUSE.</em></h2>
+    <p>The next world begins beyond this door.</p>
+    <!-- Replace # with your future Summer House world URL when ready. -->
+    <a class="gold-btn magnetic" href="#"><span>ENTER SUMMER HOUSE</span><i>↗</i></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>✦ SUMMER HOUSE</span>
+  <span>30 DAY EXPERIENCE</span>
+  <span>© 2026</span>
+</footer>
+<script>
+
+const SUMMER_HOUSE = {
+  contestants: [
+    {name:"SAVANNAH CARTER", image:"assets/image_03_94b8a2260b83.webp"},
+    {name:"NIA CALLOWAY", image:"assets/image_04_701d1a35b546.webp"},
+    {name:"AMARA BENNETT", image:"assets/image_05_14940263fea3.webp"},
+    {name:"HAN SEO YUN", image:"assets/image_06_53d228440640.webp"},
+    {name:"VALENTINA SOFIA ALMEIDA", image:"assets/image_07_bd02d0625433.webp"},
+    {name:"RENJI RAFAEL NAKAMURA", image:"assets/image_08_573bc33a2abc.webp"},
+    {name:"MATEO ALEJANDRO HERRERA", image:"assets/image_09_877174323757.webp"},
+    {name:"ADRIAN MINH LAURENT", image:"assets/image_10_296b9e01d32b.webp"},
+    {name:"EVERETT JAMES CALLOWAY", image:"assets/image_11_7172b4d42073.webp"},
+    {name:"RAFAEL MENSAH", image:"assets/image_12_54a3576abdf0.webp"},
+    {name:"YOU", image:"assets/image_13_6da040883e21.webp"}
+  ],
+  roomHours:{open:"10:00",close:"18:00"},
+  finalDay:30,
+  penaltyImpact:{eliminationVote:100,winningVote:-100},
+
+  penalties:[
+    "Entering another contestant's bedroom outside 10:00–18:00 without an active Gold Card.",
+    "Entering another contestant's bedroom during Open Hours while violating the required open-door rule.",
+    "Accessing the yacht, boat, or jet ski without an active Gold Card.",
+    "Deliberately failing to attend a scheduled Challenge or Elimination after being instructed to report."
+  ],
+  penaltyValue:100,
+  eliminationVote:100,
+  winningVote:-100
+};
+
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+
+function renderContestants(){
+  const grid=$("#castGrid"); if(!grid)return;
+  grid.innerHTML=SUMMER_HOUSE.contestants.map((c,i)=>{
+    const n=String(i+1).padStart(2,"0");
+    return `<article class="cast-card reveal" style="transition-delay:${Math.min(i*60,500)}ms">
+      <div class="cast-photo"><img src="${c.image}" alt="${c.name}" loading="lazy" onerror="this.style.opacity=0"></div>
+      <div class="cast-info"><div class="cast-name">${c.name}</div><div class="cast-number">${n}</div></div>
+    </article>`;
+  }).join("");
+}
+
+function reveal(){
+  const els=$$(".reveal");
+  if(!("IntersectionObserver" in window)){els.forEach(e=>e.classList.add("visible"));return}
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}})
+  },{threshold:.12,rootMargin:"0px 0px -45px 0px"});
+  els.forEach(e=>io.observe(e));
+}
+
+function menu(){
+  const b=$(".menu"),nav=$(".nav-links"); if(!b||!nav)return;
+  b.addEventListener("click",()=>{const open=nav.classList.toggle("open");b.setAttribute("aria-expanded",open)});
+  $$("a",nav).forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+}
+
+function cursor(){
+  const glow=$(".cursor-glow");
+  if(!glow || matchMedia("(pointer:coarse)").matches)return;
+  window.addEventListener("pointermove",e=>{
+    glow.animate({left:`${e.clientX}px`,top:`${e.clientY}px`},{duration:500,fill:"forwards",easing:"ease-out"});
+  });
+}
+
+function tilt(){
+  if(matchMedia("(pointer:coarse)").matches)return;
+  $$(".tilt").forEach(card=>{
+    card.addEventListener("pointermove",e=>{
+      const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(900px) rotateX(${-y*4}deg) rotateY(${x*5}deg) translateY(-5px)`;
+    });
+    card.addEventListener("pointerleave",()=>card.style.transform="");
+  });
+}
+
+function magnetic(){
+  if(matchMedia("(pointer:coarse)").matches)return;
+  $$(".magnetic").forEach(el=>{
+    el.addEventListener("pointermove",e=>{
+      const r=el.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;
+      el.style.transform=`translate(${x*.08}px,${y*.08}px)`;
+    });
+    el.addEventListener("pointerleave",()=>el.style.transform="");
+  });
+}
+
+function parallax(){
+  const hero=$(".hero-bg"), house=$(".house-bg");
+  if(!hero||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  window.addEventListener("scroll",()=>{
+    const y=window.scrollY;
+    if(y<window.innerHeight*1.2)hero.style.transform=`scale(1.06) translateY(${y*.06}px)`;
+    if(house){const r=house.parentElement.getBoundingClientRect(); house.style.transform=`scale(1.06) translateY(${Math.max(-40,Math.min(40,-r.top*.04))}px)`}
+  },{passive:true});
+}
+
+
+/* Page 1 -> Page 2: WorldOS-safe single-document screen transition */
+function pageTransition(){
+  const accept = document.querySelector('#home .gold-btn[href="#contestants"]');
+  const overlay = document.querySelector('#pageTransition');
+  if(!accept || !overlay) return;
+
+  accept.addEventListener("click", function(e){
+    e.preventDefault();
+    if(document.body.classList.contains("page-two")) return;
+
+    overlay.classList.add("active");
+
+    setTimeout(()=>{
+      document.body.classList.add("page-two");
+      window.scrollTo({top:0, behavior:"instant"});
+      setTimeout(()=>{
+        overlay.classList.remove("active");
+        document.querySelector("#contestants")?.scrollIntoView({behavior:"instant", block:"start"});
+      }, 450);
+    }, 650);
+  });
+
+  document.querySelector('.brand[href="#home"]')?.addEventListener("click", function(e){
+    e.preventDefault();
+    if(!document.body.classList.contains("page-two")) return;
+
+    overlay.classList.add("active");
+    setTimeout(()=>{
+      document.body.classList.remove("page-two");
+      window.scrollTo({top:0, behavior:"instant"});
+      setTimeout(()=>overlay.classList.remove("active"), 450);
+    }, 650);
+  });
+
+  document.querySelectorAll('.nav-links a[href="#home"]').forEach(a=>{
+    a.addEventListener("click", function(e){
+      e.preventDefault();
+      document.querySelector('.brand[href="#home"]')?.click();
+    });
+  });
+}
+
+function init(){  renderContestants();
+  menu(); cursor(); tilt(); magnetic(); parallax(); reveal(); pageTransition();
+  document.documentElement.style.setProperty("--room-open",`"${SUMMER_HOUSE.roomHours.open}"`);
+  document.documentElement.style.setProperty("--room-close",`"${SUMMER_HOUSE.roomHours.close}"`);
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
+
+</script>
+</body>
+</html>
